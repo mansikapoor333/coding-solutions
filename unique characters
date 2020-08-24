@@ -26,7 +26,30 @@ class Solution():
         # return True              
 
     str=""
+    print(unique(str)) 
+    
+    #without using additional data structures
+    
+    class Solution():
+    def unique(str):
+        if not str:
+            return False
+
+        mask = 0
+        for i in range(len(str)):
+            val = ord(str[i]) - ord('a')
+            if (mask & (1<<val))>0:
+                return False
+            mask |= (1<<val)  
+        return True      
+
+             
+
+    str="helo"
     print(unique(str))              
+
+
+
 
 
 time complecity= O(n)

@@ -1,0 +1,10 @@
+Check if two strings are rotation of each other
+
+class Solution(object):
+    def rotate(str1, str2):
+        return len(str1) == len(str2) and str2 in str1+str1
+
+             
+    str1="ABCD"
+    str2="CDABS"
+    print(rotate(str1,str2))

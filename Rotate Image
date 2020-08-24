@@ -1,6 +1,7 @@
 Rotate Image by 90 degrees
 
 
+
 class Solution(object):
     def __init__(self, matrix):
          self.matrix = matrix
@@ -9,6 +10,8 @@ class Solution(object):
     def rotate(matrix):
         n = len(matrix)
         m = len(matrix[0])
+
+        print(m,n)
         
         for i in range(n):
             for j in range(i,m):
@@ -17,6 +20,8 @@ class Solution(object):
                 
         for i in range(n):
             matrix[i].reverse()
+
+        return(matrix)
 
 
              

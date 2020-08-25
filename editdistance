@@ -1,0 +1,58 @@
+Given two strings, find if they are one edit away from each other
+
+
+
+class Solution(object):
+    # def __init__(self, matrix):
+    #      self.matrix = matrix
+         
+
+    def editdistance(st1, st2):
+
+        MAX_CHARS = 256
+        st1_len = len(st1)
+        st2_len = len(st2)
+
+        #when length of both strings is not same and distance > 2
+
+        if st1_len != st2_len and abs(st1_len - st2_len)>2:
+            return False
+
+        #for each character get unicode representation
+        count1 = [0]*MAX_CHARS
+        count2 = [0]* MAX_CHARS
+
+        for i in st1:
+            count1[ord(i)] += 1
+
+        for i in st2:
+            count2[ord(i)] += 1   
+
+        edit=0
+        for i in range(MAX_CHARS):
+            if count1[i] != count2[i]:
+                edit += 1
+
+            if edit > 2:
+                return False
+
+        return True
+
+
+    st1 = "palesdst"
+    st2 = "pale"
+    print(editdistance(st1, st2))            
+
+
+
+
+
+
+
+
+
+
+                         
+     
+
+

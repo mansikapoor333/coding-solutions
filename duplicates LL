@@ -1,0 +1,39 @@
+remove duplicates from unsorted linked list without keeping a temporary buffer(in-place) and preserving the order
+
+
+
+class Solution(object):
+    # def __init__(self, matrix):
+    #      self.matrix = matrix
+         
+
+    def duplicates(self,head):
+        if head is None:
+            return None
+
+        outer = head
+        while outer:
+            inner=outer
+            while inner.next:
+                if inner.next.val == curr.val:
+                    inner.next = inner.next.next
+
+                else:
+                    inner = inner.next
+
+        return head            
+
+
+
+   
+
+
+      
+
+    head = 1->6->3->3
+    print(duplicates(head)            
+
+
+
+
+                

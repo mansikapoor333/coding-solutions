@@ -1,0 +1,29 @@
+Implement an algorithm to delete a node in the middle (i.e., any node but the first and the last node, not necessarily the exact middle) or a singly linked list, given only access to that node.
+
+
+class Solution(object):
+
+    def duplicates(self,l1, n):
+
+        curr = l1.head
+        if curr == n:   #can't delete the first node
+            return
+
+        while curr.next:
+            if curr.next == n:
+                if curr.next.next:
+                    curr.next = curr.next.next
+                    return
+
+                else:
+                    return     #can't delete last node
+
+            curr = curr.next           
+
+    
+        
+
+
+    head = [1,2,3,4]
+    node = 2
+    print(duplicates(head)            

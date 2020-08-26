@@ -1,0 +1,15 @@
+remove node from a linked list
+
+
+class Solution(object):
+
+    def duplicates(self,node):
+
+        node.val = node.next.val
+        node.next = node.next.next
+        
+
+
+    head = [1,2,3,4]
+    node = 2
+    print(duplicates(head)            

@@ -1,0 +1,30 @@
+return linked list elements from kth node to end of linked list
+
+
+
+class Solution(object):
+    def duplicates(self,head,k):
+        p1,p2 = head
+
+        for i in range(k):
+            if p1 == None:
+                return None
+
+            p1 = p1.next
+
+        while p1:
+            p1 = p1.next
+            p2 = p2.next
+
+        return p2            
+        
+
+
+    head = 1->2->3->3
+    k=2
+    print(duplicates(head,k)            
+
+
+
+
+

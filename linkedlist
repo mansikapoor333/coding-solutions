@@ -1,0 +1,44 @@
+write a function to check if linkedlist is a palindrome
+
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def isPalindrome(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        
+        if not head:
+            return True
+        
+        p = head 
+        q = head 
+        prev = []
+        
+        i = 0
+        while q:
+            prev.append(q)
+            q = q.next
+            i += 1
+        q = prev[i-1]
+    
+        count = 1
+
+        while count <= i//2 + 1:
+            if prev[-count].val != p.val:
+                return False
+            p = p.next
+            count += 1
+        return True
+
+        return head    
+
+
+    head = [1,2,3]
+    print(isPalindrome(head))        
+        

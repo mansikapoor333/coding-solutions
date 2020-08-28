@@ -1,0 +1,51 @@
+find intersection of two linked lists
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    
+    def countList(self, head):
+        count = 0
+        cur = head
+        while cur is not None:
+            count += 1
+            cur = cur.next
+        return count
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        countA = self.countList(headA)
+        countB = self.countList(headB)
+
+        curA = headA
+        curB = headB
+        length = countB
+        diff = countA - countB
+        
+        # if curA[-1] != curB[-1]:
+        #     return None
+        if diff > 0:
+            # A is bigger than B
+            for i in range(diff):
+                curA = curA.next
+                
+        elif diff < 0:
+            # B is bigger than A
+            length = countA
+            for i in range(-diff):
+                curB = curB.next
+
+        for i in range(length):
+            if curA == curB:
+                return curA
+            curA = curA.next
+            curB = curB.next
+        return None
+    #how to compare tails of two linked lists
+        

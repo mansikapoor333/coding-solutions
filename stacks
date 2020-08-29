@@ -1,0 +1,82 @@
+
+Imagine a literal stack of plates. If the stack gets too high, it might topple. So in real life, we would start a new stack of plates when the previous stack exceeds some threshold.
+
+Implement a data structure SetOfStacks that implements this behavior. The SetOfStacks data structure should be composed of several stacks and should create a new stack once the previous one exceeds capacity. SetOfStacks.push() and SetOfStacks.pop() should behave identically as if it were a single stack. Additionally, add a method that returns the number of stacks in the set.
+
+Follow up: Implement a function popAt that receives an integer index and pops from the stack located at that index in the set of stacks.
+
+
+
+from collections import deque
+class Solution:
+    def __init__(self,capacity):
+
+        self.capacity = capacity
+        self.stacks = [[]]
+        self.index = 0
+
+    def __len__(self):
+        return self.index + 1    
+
+
+    def push(self,item):
+        if len(self.stacks[self.index]) < self.capacity:
+            self.stacks[self.index].append(item) 
+        else:
+            self.stacks.append([])
+            self.index += 1
+            self.stacks[self.index].append(item)    
+
+
+    def pop(self):
+        if len(self.stacks[self.index]) == 0:
+            self.index -= 1
+        return self.stacks[self.index].pop()
+
+
+
+
+
+    def pop_no_rollover(self,index):
+        self.stacks[index].pop()
+
+
+    def pop_with_rollover(self,index):
+        return self.shift_stacks(index)
+
+
+    def shift_stacks(self,index):
+        rv = self.stacks[index].pop(0)
+
+        if len(self.stacks[index] == 0):
+            self.stacks[index].pop()
+
+        elif len(self.stacks) > index+1:
+            v  = self.shift_stacks(index+1)
+            self.stacks[index].append(v)
+        return rv                
+
+
+
+
+stacks = Solution(3)
+stacks.push(6)
+stacks.push(8)
+stacks.push(3)
+print(len(stacks))                  
+
+stacks.push(4)
+print(len(stacks))  
+
+print(stacks.pop_no_rollover(0))  # should print 3
+
+print(stacks.pop())                  # should print 4
+print(stacks.pop())                  # should print 8
+print(len(stacks))                   
+
+
+
+
+    
+      
+        

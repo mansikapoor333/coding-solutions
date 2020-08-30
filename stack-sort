@@ -1,0 +1,50 @@
+sort elements of stack such that smallest elements are at the top. You can use a temporary stack
+
+
+
+def sortStack (stack): 
+	tmpStack = []
+	while len(stack) != 0: 
+		tmp = stack[len(stack)-1]
+		pop(stack) 
+
+		while(len(tmpStack) != 0 and
+			int(tmpStack[len(tmpStack)-1]) < int(tmp)): 
+		
+			push(stack,tmpStack[len(tmpStack)-1]) 
+			pop(tmpStack) 
+
+		push(tmpStack,tmp) 
+	return tmpStack 
+ 
+
+
+def push( stack, item ): 
+	stack.append( item ) 
+
+
+def pop( stack ): 
+	if(len(stack)==0): 
+		print("Stack Underflow ") 
+		exit(1) 
+	return stack.pop() 
+
+
+def prints(stack): 
+	for i in range(len(stack)-1, -1, -1): 
+		print(stack[i]) 
+	print() 
+
+# Driver Code 
+stack = [] 
+push( stack, str(34) ) 
+push( stack, str(3) ) 
+push( stack, str(31) ) 
+push( stack, str(98) ) 
+push( stack, str(92) ) 
+push( stack, str(23) ) 
+
+print("Sorted numbers are: ") 
+sortedst = sortStack(stack) 
+prints(sortedst) 
+

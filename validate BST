@@ -1,0 +1,42 @@
+validate if a tree is BST or not
+
+
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+
+class Solution(object): 
+
+    def isvalid(self, root, floor = float('-inf'), ceil = float('inf')):
+        if not root:
+            return True
+        if root.val <= floor or root.val >= ceil:
+            return False 
+
+        return self.isvalid(root.left, floor, root.val) and self.isvalid(root.right,root.val,ceil)  
+
+
+    def testcase(self):
+        root = TreeNode(3)
+        root.left = TreeNode(2)
+        root.right = TreeNode(4)
+        print(self.isvalid(root))
+
+obj=Solution()
+obj.testcase()       
+                 
+
+
+        
+
+
+
+
+
+
+
+
+                    

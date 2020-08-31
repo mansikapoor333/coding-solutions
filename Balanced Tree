@@ -1,0 +1,52 @@
+check if a tree is height balanced or not
+
+
+
+
+class TreeNode(object):
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+class Solution(object): 
+
+    def isBalanced(self, root):
+        if root == None:
+            return True
+        if self.check(root) != -1:
+            return True
+        else:
+            return False
+    
+    def check(self, root):
+        if root == None:
+            return 0
+        x=self.check(root.left)
+        y=self.check(root.right)
+        
+        if x == -1 or y == -1 or abs(x-y) >1:
+            return -1
+        return max(x,y)+1
+
+    def testcase(self):
+        root = TreeNode(3)
+        root.left = TreeNode(2)
+        root.right = TreeNode(4)
+        print(self.isBalanced(root))
+
+obj=Solution()
+obj.testcase()       
+                 
+
+
+        
+
+
+
+
+
+
+
+
+                    

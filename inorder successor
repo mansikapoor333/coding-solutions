@@ -1,0 +1,75 @@
+# In-order Successor
+#Successor: Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a
+#binary search tree. You may assume that each node has a link to its parent.
+
+
+
+
+class TreeNode(object):
+    def __init__(self, data=None):
+        self.data = data
+        self.left = None
+        self.right = None
+   
+class Solution(object): 
+    def levelnodes(self,n):
+        if not n:
+            return None
+
+        def leftmostchild(n):
+            if n is None:
+                return None
+            while n.left != None:
+                n = n.left
+            return n
+
+        def inorder1(self,n):
+            if not n:
+                return None
+
+            if n.right != None:
+                return leftmostchild(n.right)
+
+            else:
+                q = n
+                x = q.parent
+                while x != None and x.left != q:
+                    q = x
+                    x = x.parent
+
+                return x    
+
+
+
+    def testcase(self):
+        root = TreeNode(3)
+        root.left = TreeNode(2)
+        root.right = TreeNode(4)
+        root.left.left = TreeNode(3) 
+        root.right.right = TreeNode(90) 
+        temp = root.left.right.right
+        succ = self.inorder1(temp)
+        # print(self.succ(root))
+        if succ is not None:
+            print("Inorder Successor of %d is %d "%(temp.data , succ.data))
+        else:
+            print("\nInorder Successor doesn't exist")
+        
+          
+   
+
+obj=Solution()
+obj.testcase()       
+                 
+
+
+        
+
+
+
+
+
+
+
+
+                    

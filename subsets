@@ -1,0 +1,35 @@
+find all subsets
+
+
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object): 
+    def binarySearch(self,nums):
+
+        subsets = [[]]
+        for num in nums:
+
+            n = len(subsets)
+
+            for j in range(n):
+                subsets.append(subsets[j] + [num])
+
+        return subsets            
+       
+
+       
+
+    def testcase(self):
+        nums = [1,2,3]
+        # n = len(nums) 
+        print(self.binarySearch(nums))          
+
+        
+
+obj=Solution()
+obj.testcase()

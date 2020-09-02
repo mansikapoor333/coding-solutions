@@ -1,0 +1,36 @@
+find fixed point in an array(value equal to index)----no duplicates
+
+
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object): 
+    def levelnodes(self,arr,low, high):
+
+        if high >= low:
+            mid = (low+high)//2
+
+        if mid is arr[mid]:
+            return mid
+
+        if mid > arr[mid]:
+            return (arr, mid+1, high)    
+
+        else:
+            return (arr, low, mid-1)  
+
+        return -1
+
+    def testcase(self):
+        arr = [-10, -1, 0, 3, 10, 11, 30, 50, 100] 
+        n = len(arr) 
+        print(self.levelnodes(arr, 0, n-1))          
+
+        
+
+obj=Solution()
+obj.testcase()

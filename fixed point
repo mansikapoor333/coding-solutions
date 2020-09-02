@@ -34,3 +34,49 @@ class Solution(object):
 
 obj=Solution()
 obj.testcase()
+
+
+
+#with duplicates
+
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object): 
+    def binarySearch(self,arr, low, high):
+        if (high < low):
+            return -1
+	
+	
+        mid = int((low + high) / 2) 
+        midValue = arr[mid] 
+
+        if (mid == arr[mid]): 
+            return mid 
+
+      
+        leftindex = min(mid - 1, midValue) 
+        left = self.binarySearch(arr, low, leftindex) 
+
+        if (left >= 0): 
+            return left 
+
+    
+        rightindex = max(mid + 1, midValue) 
+        right = self.binarySearch(arr, rightindex, high) 
+
+        return right
+
+    def testcase(self):
+        arr = [-10, -1, 0, 3, 3, 3, 3, 10, 11, 30, 50, 100] 
+        n = len(arr) 
+        print(self.binarySearch(arr, 0, n-1))          
+
+        
+
+obj=Solution()
+obj.testcase()

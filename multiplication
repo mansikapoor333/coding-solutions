@@ -1,0 +1,38 @@
+multiply two positive numbers without using * operator
+
+
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object): 
+    def minProduct(self,a,b):
+        bigger = b if a < b else a #a < b ? b : a
+        smaller = a if a < b else b #a < b ? a : b
+        return self.minProductHelper(smaller,bigger)
+
+    def minProductHelper(self,smaller, bigger):
+        if smaller == 0:
+            return 0
+        elif smaller == 1:
+            return bigger
+
+        s = smaller >> 1 # divide by 2
+        halfprod = self.minProduct(s,bigger)
+        
+        if smaller % 2 == 0:
+            return halfprod + halfprod
+        else: 
+            return halfprod + halfprod + bigger   
+            
+
+    def testcase(self): 
+        print(self.minProduct(5,6))          
+
+        
+
+obj=Solution()
+obj.testcase()

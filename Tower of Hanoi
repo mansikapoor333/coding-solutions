@@ -1,0 +1,27 @@
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object):       #hanoi(from_rod, to_rod, aux_rod)
+    def __init__(self):
+        self.counter = 0
+
+    def hanoi(self, n, a, c, b):
+        if n == 1:
+            self.counter += 1
+            print('{0}->{1}'.format(a, b))
+        else:
+            self.hanoi(n -1, a, b, c)
+            self.hanoi(1, a, c, b)
+            self.hanoi(n-1, b, c, a)
+
+    def testcase(self):  
+        print(self.hanoi(3,"a","c","b"))          
+
+        
+
+obj=Solution()
+obj.testcase()

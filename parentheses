@@ -1,0 +1,38 @@
+all valid permutations of n pair of parentheses
+
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object):
+    def permute(self,n):
+
+        ans = []
+
+        def backtrack(S='', left=0, right=0):
+            if len(S) == 2*n:
+                ans.append(S)
+                return
+
+            if left<n:
+                backtrack(S+'(', left+1, right)
+
+            if right<left:
+                backtrack(S+')', left, right+1)
+
+        backtrack()
+        return ans        
+    
+
+    def testcase(self): 
+        n=3
+        # s= "abc"
+        print(self.permute(n))          
+
+        
+
+obj=Solution()
+obj.testcase()

@@ -1,0 +1,33 @@
+permutation of a string without duplicates
+
+
+# class TreeNode(object):
+#     def __init__(self, data):
+#         self.data = data
+#         self.left = None
+#         self.right = None
+   
+class Solution(object):
+    def permute(self,s):
+        if len(s) > 1 :
+            list1 = []
+            for i in range(0, len(s)):
+                Y = self.permute(s[:i] + s[i+1:])
+                for j in Y:
+                    list1.append(s[i] + j)
+            return list1
+
+        else:
+            return [s]   
+
+            
+             
+
+    def testcase(self): 
+        s= "abc"
+        print(self.permute(s))          
+
+        
+
+obj=Solution()
+obj.testcase()

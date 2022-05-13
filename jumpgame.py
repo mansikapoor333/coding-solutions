@@ -1,25 +1,27 @@
 
 
 class Solution():
-	def JumpGame(self, nums):
+	def uniquepaths(self, m, n):
 
-		destination = len(nums)-1
-		source = destination - 1
+		if m <= 0 and n <= 0:
+			return
 
+		if m == 0 and n == 0:
+			return 1
 
-		while source >= 0:
-			if source + nums[source] >= destination:
-				destination = source
-				source -= 1
+		matrix = [[1 for j in range(n)] for i in range(m)]
+		
 
-			else:
-				source -= 1
+		for i in range(1,m):
+			for j in range(1,n):
+				matrix[i][j] = matrix[i-1][j] + matrix[i][j-1]
+		return matrix[-1][-1]		
 
-		return True if destination == 0 else False		
 			    
 	def testcase(self):
-		nums = [2,3,1,1,4]
-		print(self.JumpGame(nums))
+		m = 3
+		n = 7
+		print(self.uniquepaths(m,n))
 
 obj = Solution()
 obj.testcase()
